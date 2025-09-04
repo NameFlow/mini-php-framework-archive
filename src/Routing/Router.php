@@ -51,7 +51,6 @@ class Router
 
         foreach ($routesByRequestMethod as $route) {
             $routeUri = $route['uri'];
-
             $match = $this->matchUriAndPullParams($requestUri, $routeUri);
 
             // If request uri IS matches with route uri
@@ -163,7 +162,7 @@ class Router
         return explode('/', trim($uri, "/"));
     }
 
-    private function handleControllerResponse(Response | View $controllerResponse) {
+    private function handleControllerResponse(Response | View | null $controllerResponse) {
         if ($controllerResponse instanceof Response) {
             $responseCode = $controllerResponse->httpResponseCode;
 
@@ -178,7 +177,9 @@ class Router
             $httpResponseCode = $this->httpResponseCode;
 
             return new Response($httpResponseCode, $controllerResponse);
-        } 
+        } elseif (is_null($controllerResponse)) {
+            return new Response(200);
+        }
     }
 
     private function makeResponse404(null | View $view = null) {

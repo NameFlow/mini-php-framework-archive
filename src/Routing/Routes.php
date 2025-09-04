@@ -4,27 +4,18 @@ declare(strict_types=1);
 
 namespace App\Routing;
 
-use App\Controllers\ProductController;
-
 final class Routes
 {
     private static array $GET = [
-        ['/products', ProductController::class, 'index'],
-        ['/products/{id}', ProductController::class, 'show'],
-        ['/products/{id}/edit', ProductController::class, 'edit'],
-        ['/countries/{id}/regions/{region}/cities/{city}', ProductController::class, 'cityInRegionInCountry'],
     ];
 
     private static array $POST = [
-        ['/products', ProductController::class, 'store'],
     ];
 
     private static array $PUT = [
-        ['/products/{id}', ProductController::class, 'update'],
     ];
 
     private static array $DELETE = [
-        ['/products/{id}', ProductController::class, 'delete'],
     ];
 
     private static array $keys = [

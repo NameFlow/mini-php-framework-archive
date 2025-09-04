@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace App\Database\Schema;
 
-interface TablesReaderInterface
+interface TableReaderInterface
 {
     public function getTableNames(): array; 
 }

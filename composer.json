@@ -6,7 +6,7 @@
             "App\\": "src/"
         },
         "files": [
-            "src/Config/config.php"
+            
         ]
     },
     "require": {}

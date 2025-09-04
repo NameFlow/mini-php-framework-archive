@@ -3,15 +3,9 @@ declare(strict_types=1);
 
 namespace App\Config;
 
-class Env
+final class Env
 {
-    public function __construct()
-    {
-        // TODO: Initialize class
-    }
+    public const HOST = "localhost:8080";
 
-    public function methodName(): void
-    {
-        // TODO: Implement method
-    }
+    private function __construct() {}
 }

@@ -12,7 +12,7 @@ final class SchemaReader
 
     public function __construct(
         private readonly Connection $connection,
-        private readonly TablesReaderInterface $tablesReader
+        private readonly TableReaderInterface $tablesReader
     ) {}
 
     public function getTableNames(): array

@@ -4,14 +4,13 @@ declare(strict_types=1);
 
 namespace App\Core;
 
-use App\Core\Binding;
 use Closure;
 use InvalidArgumentException;
 
 /**
- * Class assembler
+ * Class assembler.
  * 
- * Can bind and give Classes 
+ * Can bind and give Classes.
  */
 class Container
 {
@@ -20,11 +19,6 @@ class Container
 
     /** @var Class[] */
     private array $sharedInstances = [];
-
-
-    public function __construct()
-    {
-    }
 
 
     /**
@@ -44,7 +38,6 @@ class Container
         $this->bindings[$className] = $binding;
     }
 
-
     /**
      * Binds a ClassName with a Closure for later creation in get-method.
      *
@@ -62,7 +55,6 @@ class Container
         $this->bindings[$className] = $binding;
     }
 
-
     /**
      * Gives instance of requested Class by ClassName.
      *
@@ -72,7 +64,7 @@ class Container
      * 
      * @throws InvalidArgumentException ClassName was not binded
      */
-    public function get(string $className)
+    public function get(string $className): object
     {
         $binding = $this->bindings[$className] ?? null;
         
@@ -87,7 +79,7 @@ class Container
         } 
 
         $closure = $binding->closure;
-        $instance = $closure(); 
+        $instance = $closure($this); 
         
         $isShared = $binding->shared === true;
         if ($isShared) {

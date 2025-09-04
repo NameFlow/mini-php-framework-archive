@@ -5,7 +5,7 @@ namespace App\Database\Schema;
 
 use App\Database\Connection\Connection;
 
-class TablesReaderSqlite implements TablesReaderInterface
+class TableReaderSqlite implements TableReaderInterface
 {
     public function __construct(
         private readonly Connection $connection
@@ -20,6 +20,6 @@ class TablesReaderSqlite implements TablesReaderInterface
         $statement->execute([]);
         $fetchedData = $statement->fetchAll();
 
-        return array_map(fn($item) => $item[0], $fetchedData);
+        return array_map(fn($item) => $item['name'], $fetchedData);
     }
 }

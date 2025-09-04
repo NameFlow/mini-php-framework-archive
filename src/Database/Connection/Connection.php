@@ -15,9 +15,9 @@ final class Connection
     /**
      * @param string $dbPath Where database located.
      */
-    public function __construct(string $dbPath)
+    public function __construct(string $pdoDbConnection)
     {
-        $this->pdo = new PDO('sqlite:' . $dbPath);
+        $this->pdo = new PDO($pdoDbConnection);
         $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     }
 
